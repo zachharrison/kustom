@@ -1,0 +1,48 @@
+const products = [
+  {
+    _id: '1',
+    name: 'Black hoodie',
+    image: '/images/black-hoodie.jpeg',
+    description: 'Black hoodie by Kustom',
+    category: 'Clothing',
+    price: 45,
+    countInStock: 3,
+    rating: 4.5,
+    numReviews: 4,
+  },
+  {
+    _id: '2',
+    name: 'White hoodie',
+    image: '/images/white-hoodie.jpeg',
+    description: 'White hoodie by Kustom',
+    category: 'Clothing',
+    price: 45,
+    countInStock: 2,
+    rating: 5,
+    numReviews: 2,
+  },
+  {
+    _id: '3',
+    name: 'Black t-shirt',
+    image: '/images/black-shirt.jpeg',
+    description: 'Black t-shirt by Kustom',
+    category: 'Clothing',
+    price: 30,
+    countInStock: 5,
+    rating: 4,
+    numReviews: 6,
+  },
+  {
+    _id: '4',
+    name: 'White t-shirt',
+    image: '/images/white-shirt.jpeg',
+    description: 'White t-shirt by Kustom',
+    category: 'Clothing',
+    price: 30,
+    countInStock: 8,
+    rating: 5,
+    numReviews: 5,
+  },
+];
+
+export default products;
