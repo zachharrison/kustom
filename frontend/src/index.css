@@ -1,3 +1,14 @@
 main {
   min-height: 80vh;
 }
+
+.size-btn {
+  border: 2px solid #415dcf;
+  width: 50px;
+  height: 50px;
+  margin: 4px;
+}
+
+.cart-btn {
+  width: 200px;
+}
