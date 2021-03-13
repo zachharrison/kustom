@@ -1,21 +1,29 @@
-import React, { useState } from 'react';
-import {
-  Row,
-  Col,
-  Image,
-  ListGroup,
-  Container,
-  Card,
-  Button,
-} from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Container } from 'react-bootstrap';
+import products from '../products';
+import axios from 'axios';
 
-const SizeSelect = ({ product }) => {
+const SizeSelect = (props) => {
   const [size, setSize] = useState('');
+  // const [product, setProduct] = useState({});
+
+  // useEffect(() => {
+  //   const fetchProduct = async () => {
+  //     const { data } = await axios.get(`/api/products/${match.params.id}`);
+  //     setProduct(data);
+  //   };
+
+  //   fetchProduct();
+  // });
+
+  // const product = product.find()
 
   const onChange = (e) => {
     console.log(e.target.value);
     setSize(e.target.value);
   };
+
+  console.log(props);
 
   return (
     <Container
@@ -41,7 +49,7 @@ const SizeSelect = ({ product }) => {
           value='small'
           id='small'
           onChange={onChange}
-          disabled={product.quantity.small === 0}
+          disabled={props.product.quantity.small === 0}
         />
         <input
           type='radio'
@@ -49,7 +57,7 @@ const SizeSelect = ({ product }) => {
           value='medium'
           id='medium'
           onChange={onChange}
-          disabled={product.quantity.medium === 0}
+          disabled={props.product.quantity.medium === 0}
         />
         <input
           type='radio'
@@ -57,7 +65,7 @@ const SizeSelect = ({ product }) => {
           value='large'
           id='large'
           onChange={onChange}
-          disabled={product.quantity.large === 0}
+          disabled={props.product.quantity.large === 0}
         />
         <input
           type='radio'
@@ -65,7 +73,7 @@ const SizeSelect = ({ product }) => {
           value='xlarge'
           id='xlarge'
           onChange={onChange}
-          disabled={product.quantity.xlarge === 0}
+          disabled={props.product.quantity.xlarge === 0}
         />
 
         <label className='size-label' htmlFor='small'>

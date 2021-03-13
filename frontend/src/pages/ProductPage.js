@@ -1,26 +1,35 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  Row,
-  Col,
-  Image,
-  ListGroup,
-  Container,
-  Card,
-  Button,
-} from 'react-bootstrap';
+import { Row, Col, Image, ListGroup } from 'react-bootstrap';
 import SizeSelect from '../components/SizeSelect';
 import Rating from '../components/Rating';
-import products from '../products';
+// import products from '../products';
+import axios from 'axios';
 
 const ProductPage = ({ match }) => {
+  // const [products, setProducts] = useState([]);
+  const [product, setProduct] = useState({});
+  const [stock, setStock] = useState(0);
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${match.params.id}`);
+      setProduct(data);
+      // const quantities = await Object.values(product.quantity);
+      // const totalStock = await quantities.reduce((acc, cur) => (acc += cur));
+      // setStock(totalStock);
+    };
+
+    fetchProduct();
+    console.log(product);
+    // console.log(stock);
+  }, []);
+
   // WILL EVENTUALLY COME FROM THE BACKEND
-  const product = products.find((product) => product._id === match.params.id);
+  // const product = products.find((product) => product._id === match.params.id);
 
   // GET TOTAL NUMBER OF PRODUCTS TO CHECK IF IT IS GREATER THAN ZERO
-  const totalStock = Object.values(product.quantity).reduce(
-    (acc, cur) => (acc += cur)
-  );
+  // const totalStock = stock.reduce((acc, cur) => (acc += cur));
 
   return (
     <>
@@ -45,11 +54,11 @@ const ProductPage = ({ match }) => {
               </Row>
             </ListGroup.Item>
             <ListGroup.Item>
-              <SizeSelect product={product} />
+              {/* <SizeSelect product={product} /> */}
               <div className='flex-container'>
-                <button className='btn-brand mb-4' disabled={totalStock === 0}>
-                  {totalStock === 0 ? 'Out of Stock' : 'Add to Cart'}
-                </button>
+                {/* <button className='btn-brand mb-4' disabled={stock === 0}>
+                  {stock === 0 ? 'Out of Stock' : 'Add to Cart'}
+                </button> */}
                 <Rating
                   value={product.rating}
                   text={`${product.numReviews} ${
