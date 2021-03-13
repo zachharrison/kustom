@@ -10,6 +10,7 @@ import {
   Button,
 } from 'react-bootstrap';
 import SizeSelect from '../components/SizeSelect';
+import Rating from '../components/Rating';
 
 import products from '../products';
 
@@ -42,8 +43,14 @@ const ProductPage = ({ match }) => {
             <ListGroup.Item>
               <SizeSelect />
               <div className='flex-container'>
-                <button className='btn-brand'>Add to Cart</button>
-                <p>{product.description}</p>
+                <button className='btn-brand mb-4'>Add to Cart</button>
+                <Rating
+                  value={product.rating}
+                  text={`${product.numReviews} ${
+                    product.numReviews === 1 ? 'Review' : 'Reviews'
+                  }`}
+                />
+                <p className='mt-4'>{product.description}</p>
               </div>
             </ListGroup.Item>
           </ListGroup>

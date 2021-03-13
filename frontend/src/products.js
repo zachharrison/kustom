@@ -29,7 +29,7 @@ const products = [
       xlarge: 8,
     },
     rating: 5,
-    numReviews: 2,
+    numReviews: 1,
   },
   {
     _id: '3',
