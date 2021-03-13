@@ -1,12 +1,11 @@
 const products = [
   {
-    _id: '1',
     name: 'Black hoodie',
     image: '/images/black-hoodie.jpeg',
     description: 'Black hoodie by Kustom',
     category: 'Clothing',
     price: 45,
-    quantity: {
+    size: {
       small: 0,
       medium: 0,
       large: 0,
@@ -16,13 +15,12 @@ const products = [
     numReviews: 4,
   },
   {
-    _id: '2',
     name: 'White hoodie',
     image: '/images/white-hoodie.jpeg',
     description: 'White hoodie by Kustom',
     category: 'Clothing',
     price: 45,
-    quantity: {
+    size: {
       small: 8,
       medium: 10,
       large: 8,
@@ -32,13 +30,12 @@ const products = [
     numReviews: 1,
   },
   {
-    _id: '3',
     name: 'Black t-shirt',
     image: '/images/black-shirt.jpeg',
     description: 'Black t-shirt by Kustom',
     category: 'Clothing',
     price: 30,
-    quantity: {
+    size: {
       small: 12,
       medium: 10,
       large: 8,
@@ -48,13 +45,12 @@ const products = [
     numReviews: 6,
   },
   {
-    _id: '4',
     name: 'White t-shirt',
     image: '/images/white-shirt.jpeg',
     description: 'White t-shirt by Kustom',
     category: 'Clothing',
     price: 30,
-    quantity: {
+    size: {
       small: 13,
       medium: 10,
       large: 0,
