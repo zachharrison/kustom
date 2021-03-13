@@ -11,14 +11,13 @@ import {
 } from 'react-bootstrap';
 import SizeSelect from '../components/SizeSelect';
 import Rating from '../components/Rating';
-
 import products from '../products';
 
 const ProductPage = ({ match }) => {
   // WILL EVENTUALLY COME FROM THE BACKEND
   const product = products.find((product) => product._id === match.params.id);
 
-  // GET TOTAL NUMBER OF SHIRTS TO CHECK IF IT IS GREATER THAN ZERO
+  // GET TOTAL NUMBER OF PRODUCTS TO CHECK IF IT IS GREATER THAN ZERO
   const totalStock = Object.values(product.quantity).reduce(
     (acc, cur) => (acc += cur)
   );
@@ -58,7 +57,6 @@ const ProductPage = ({ match }) => {
                   }`}
                 />
                 <p className='mt-4'>{product.description}</p>
-                <p className='mt-4'>{totalStock}</p>
               </div>
             </ListGroup.Item>
           </ListGroup>

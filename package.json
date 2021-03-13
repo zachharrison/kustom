@@ -1,0 +1,22 @@
+{
+  "name": "kustom",
+  "version": "1.0.0",
+  "description": "Ecommerce clothing store",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zachharrison/kustom.git"
+  },
+  "author": "Zach Harrison",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zachharrison/kustom/issues"
+  },
+  "homepage": "https://github.com/zachharrison/kustom#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
