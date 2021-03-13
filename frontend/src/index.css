@@ -18,13 +18,11 @@ main {
   margin: 4px;
 }
 .size-btn:hover {
-  /* border: 2px solid #333a40; */
   background: #333a40;
   color: #fff;
 }
 
 .btn-brand {
-  /* background: #415dcf; */
   min-width: 225px;
   padding: 6px;
   background: #333a40;
@@ -34,4 +32,28 @@ main {
 .btn-brand:hover {
   background: #41515c;
   border: 3px solid #41515c;
+}
+
+.select-size input {
+  display: none;
+}
+
+.size-label {
+  display: inline-block;
+  text-align: center;
+  line-height: 50px;
+  cursor: pointer;
+  border: 2px solid #333a40;
+  background: transparent;
+  min-width: 50px;
+  height: 50px;
+  margin: 4px;
+}
+
+#small:checked ~ label[for='small'],
+#medium:checked ~ label[for='medium'],
+#large:checked ~ label[for='large'],
+#xlarge:checked ~ label[for='xlarge'] {
+  background: #333a40;
+  color: #fff;
 }

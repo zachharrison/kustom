@@ -21,7 +21,7 @@ const ProductPage = ({ match }) => {
   return (
     <>
       <Link className='my-3' to='/'>
-        <i class='fas fa-long-arrow-alt-left'></i> Back
+        <i className='fas fa-long-arrow-alt-left'></i> Back
       </Link>
 
       <Row className='mt-5'>

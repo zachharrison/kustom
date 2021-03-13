@@ -12,7 +12,7 @@ import {
 const SizeSelect = () => {
   const [size, setSize] = useState('');
 
-  const handleSize = (e) => {
+  const onChange = (e) => {
     console.log(e.target.value);
     setSize(e.target.value);
   };
@@ -33,19 +33,49 @@ const SizeSelect = () => {
           alignItems: 'center',
           justifyContent: 'center',
         }}
+        className='select-size'
       >
-        <button className='size-btn' onClick={handleSize} value='small'>
-          <strong>S</strong>
-        </button>
-        <button className='size-btn' onClick={handleSize} value='medium'>
-          <strong>M</strong>
-        </button>
-        <button className='size-btn' onClick={handleSize} value='large'>
-          <strong>L</strong>
-        </button>
-        <button className='size-btn' onClick={handleSize} value='xlarge'>
-          <strong>XL</strong>
-        </button>
+        <input
+          type='radio'
+          name='size'
+          value='small'
+          id='small'
+          onChange={onChange}
+        />
+        <input
+          type='radio'
+          name='size'
+          value='medium'
+          id='medium'
+          onChange={onChange}
+        />
+        <input
+          type='radio'
+          name='size'
+          value='large'
+          id='large'
+          onChange={onChange}
+        />
+        <input
+          type='radio'
+          name='size'
+          value='xlarge'
+          id='xlarge'
+          onChange={onChange}
+        />
+
+        <label className='size-label' htmlFor='small'>
+          S
+        </label>
+        <label className='size-label' htmlFor='medium'>
+          M
+        </label>
+        <label className='size-label' htmlFor='large'>
+          L
+        </label>
+        <label className='size-label' htmlFor='xlarge'>
+          XL
+        </label>
       </div>
     </Container>
   );
