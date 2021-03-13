@@ -23,7 +23,7 @@ const SizeSelect = () => {
         display: 'flex',
         justifyContent: 'center',
         flexDirection: 'column',
-        marginBottom: '5px',
+        marginBottom: '25px',
       }}
     >
       <h5 className='text-center py-3'>Select size</h5>
@@ -35,16 +35,16 @@ const SizeSelect = () => {
         }}
       >
         <button className='size-btn' onClick={handleSize} value='small'>
-          S
+          <strong>S</strong>
         </button>
         <button className='size-btn' onClick={handleSize} value='medium'>
-          M
+          <strong>M</strong>
         </button>
         <button className='size-btn' onClick={handleSize} value='large'>
-          L
+          <strong>L</strong>
         </button>
         <button className='size-btn' onClick={handleSize} value='xlarge'>
-          XL
+          <strong>XL</strong>
         </button>
       </div>
     </Container>

@@ -40,8 +40,11 @@ const ProductPage = ({ match }) => {
               </Row>
             </ListGroup.Item>
             <ListGroup.Item>
-              <SizeSelect></SizeSelect>
-              <p>{product.description}</p>
+              <SizeSelect />
+              <div className='flex-container'>
+                <button className='btn-brand'>Add to Cart</button>
+                <p>{product.description}</p>
+              </div>
             </ListGroup.Item>
           </ListGroup>
         </Col>

@@ -2,13 +2,36 @@ main {
   min-height: 80vh;
 }
 
+.flex-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .size-btn {
-  border: 2px solid #415dcf;
-  width: 50px;
+  /* border: 2px solid #415dcf; */
+  border: 2px solid #333a40;
+  background: transparent;
+  min-width: 50px;
   height: 50px;
   margin: 4px;
 }
+.size-btn:hover {
+  /* border: 2px solid #333a40; */
+  background: #333a40;
+  color: #fff;
+}
 
-.cart-btn {
-  width: 200px;
+.btn-brand {
+  /* background: #415dcf; */
+  min-width: 225px;
+  padding: 6px;
+  background: #333a40;
+  color: #fff;
+  border: 3px solid #333a40;
+}
+.btn-brand:hover {
+  background: #41515c;
+  border: 3px solid #41515c;
 }
