@@ -9,7 +9,7 @@ import {
   Button,
 } from 'react-bootstrap';
 
-const SizeSelect = () => {
+const SizeSelect = ({ product }) => {
   const [size, setSize] = useState('');
 
   const onChange = (e) => {
@@ -41,6 +41,7 @@ const SizeSelect = () => {
           value='small'
           id='small'
           onChange={onChange}
+          disabled={product.quantity.small === 0}
         />
         <input
           type='radio'
@@ -48,6 +49,7 @@ const SizeSelect = () => {
           value='medium'
           id='medium'
           onChange={onChange}
+          disabled={product.quantity.medium === 0}
         />
         <input
           type='radio'
@@ -55,6 +57,7 @@ const SizeSelect = () => {
           value='large'
           id='large'
           onChange={onChange}
+          disabled={product.quantity.large === 0}
         />
         <input
           type='radio'
@@ -62,6 +65,7 @@ const SizeSelect = () => {
           value='xlarge'
           id='xlarge'
           onChange={onChange}
+          disabled={product.quantity.xlarge === 0}
         />
 
         <label className='size-label' htmlFor='small'>

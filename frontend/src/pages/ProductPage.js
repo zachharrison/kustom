@@ -18,6 +18,11 @@ const ProductPage = ({ match }) => {
   // WILL EVENTUALLY COME FROM THE BACKEND
   const product = products.find((product) => product._id === match.params.id);
 
+  // GET TOTAL NUMBER OF SHIRTS TO CHECK IF IT IS GREATER THAN ZERO
+  const totalStock = Object.values(product.quantity).reduce(
+    (acc, cur) => (acc += cur)
+  );
+
   return (
     <>
       <Link className='my-3' to='/'>
@@ -41,9 +46,11 @@ const ProductPage = ({ match }) => {
               </Row>
             </ListGroup.Item>
             <ListGroup.Item>
-              <SizeSelect />
+              <SizeSelect product={product} />
               <div className='flex-container'>
-                <button className='btn-brand mb-4'>Add to Cart</button>
+                <button className='btn-brand mb-4' disabled={totalStock === 0}>
+                  {totalStock === 0 ? 'Out of Stock' : 'Add to Cart'}
+                </button>
                 <Rating
                   value={product.rating}
                   text={`${product.numReviews} ${
@@ -51,6 +58,7 @@ const ProductPage = ({ match }) => {
                   }`}
                 />
                 <p className='mt-4'>{product.description}</p>
+                <p className='mt-4'>{totalStock}</p>
               </div>
             </ListGroup.Item>
           </ListGroup>

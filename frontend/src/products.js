@@ -7,10 +7,10 @@ const products = [
     category: 'Clothing',
     price: 45,
     quantity: {
-      small: 8,
-      medium: 15,
-      large: 12,
-      xlarge: 5,
+      small: 0,
+      medium: 0,
+      large: 0,
+      xlarge: 0,
     },
     rating: 4.5,
     numReviews: 4,
@@ -57,7 +57,7 @@ const products = [
     quantity: {
       small: 13,
       medium: 10,
-      large: 2,
+      large: 0,
       xlarge: 5,
     },
     rating: 5,

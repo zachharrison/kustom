@@ -29,6 +29,10 @@ main {
   color: #fff;
   border: 3px solid #333a40;
 }
+.btn-brand[disabled]:hover {
+  background: #333a40;
+  border: 3px solid #333a40;
+}
 .btn-brand:hover {
   background: #41515c;
   border: 3px solid #41515c;
@@ -56,4 +60,17 @@ main {
 #xlarge:checked ~ label[for='xlarge'] {
   background: #333a40;
   color: #fff;
+}
+
+#small[disabled] ~ label[for='small'] {
+  opacity: 0.2;
+}
+#medium[disabled] ~ label[for='medium'] {
+  opacity: 0.2;
+}
+#large[disabled] ~ label[for='large'] {
+  opacity: 0.2;
+}
+#xlarge[disabled] ~ label[for='xlarge'] {
+  opacity: 0.2;
 }
