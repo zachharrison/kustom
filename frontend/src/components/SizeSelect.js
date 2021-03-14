@@ -1,29 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Container } from 'react-bootstrap';
-import products from '../products';
-import axios from 'axios';
 
-const SizeSelect = (props) => {
-  const [size, setSize] = useState('');
-  // const [product, setProduct] = useState({});
-
-  // useEffect(() => {
-  //   const fetchProduct = async () => {
-  //     const { data } = await axios.get(`/api/products/${match.params.id}`);
-  //     setProduct(data);
-  //   };
-
-  //   fetchProduct();
-  // });
-
-  // const product = product.find()
+const SizeSelect = ({ size }) => {
+  const [orderSize, setOrderSize] = useState('');
 
   const onChange = (e) => {
     console.log(e.target.value);
-    setSize(e.target.value);
+    setOrderSize(e.target.value);
   };
-
-  console.log(props);
 
   return (
     <Container
@@ -49,7 +33,7 @@ const SizeSelect = (props) => {
           value='small'
           id='small'
           onChange={onChange}
-          disabled={props.product.quantity.small === 0}
+          disabled={size.small === 0}
         />
         <input
           type='radio'
@@ -57,7 +41,7 @@ const SizeSelect = (props) => {
           value='medium'
           id='medium'
           onChange={onChange}
-          disabled={props.product.quantity.medium === 0}
+          disabled={size.medium === 0}
         />
         <input
           type='radio'
@@ -65,7 +49,7 @@ const SizeSelect = (props) => {
           value='large'
           id='large'
           onChange={onChange}
-          disabled={props.product.quantity.large === 0}
+          disabled={size.large === 0}
         />
         <input
           type='radio'
@@ -73,7 +57,7 @@ const SizeSelect = (props) => {
           value='xlarge'
           id='xlarge'
           onChange={onChange}
-          disabled={props.product.quantity.xlarge === 0}
+          disabled={size.xlarge === 0}
         />
 
         <label className='size-label' htmlFor='small'>
