@@ -33,6 +33,13 @@ export const listProductDetails = (id) => async (dispatch) => {
 
     const { data } = await axios.get(`/api/products/${id}`);
 
+    // GET TOTAL NUMBER OF PRODUCTS IN STOCK TO CHECK IF IT IS GREATER THAN ZERO
+    const totalStock = Object.values(data.size).reduce(
+      (acc, curr) => (acc += curr)
+    );
+
+    data.totalStock = totalStock;
+
     dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data });
   } catch (error) {
     // CHECK TO SEE IF THERE IS A CUSTOM ERROR MESSAGE FROM THE SERVER, IF NOT JUST RETURN THE DEFAULT

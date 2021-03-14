@@ -24,9 +24,6 @@ const ProductPage = ({ match }) => {
     dispatch(listProductDetails(match.params.id));
   }, [dispatch, match]);
 
-  // GET TOTAL NUMBER OF PRODUCTS TO CHECK IF IT IS GREATER THAN ZERO
-  const totalStock = Object.values(size).reduce((acc, cur) => (acc += cur));
-
   return (
     <>
       <Link className='my-3' to='/'>
@@ -58,9 +55,9 @@ const ProductPage = ({ match }) => {
                 <div className='flex-container'>
                   <button
                     className='btn-brand mb-4'
-                    disabled={totalStock === 0}
+                    disabled={product.totalStock === 0}
                   >
-                    {totalStock === 0 ? 'Out of Stock' : 'Add to Cart'}
+                    {product.totalStock === 0 ? 'Out of Stock' : 'Add to Cart'}
                   </button>
                   <Rating
                     value={product.rating}
