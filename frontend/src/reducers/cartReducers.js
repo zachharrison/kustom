@@ -5,24 +5,28 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
     case CART_ADD_ITEM:
       const item = action.payload;
 
-      // ITEM ALREADY EXISTS IN THE CART
-      const existingItem = state.cartItems.find(
-        (cartItem) => cartItem.product === item.product
-      );
+      // // ITEM ALREADY EXISTS IN THE CART
+      // const existingItem = state.cartItems.find(
+      //   (cartItem) => cartItem.product === item.product
+      // );
 
-      if (existingItem) {
-        return {
-          ...state,
-          cartItems: state.cartItems.map((cartItem) =>
-            cartItem.product === existingItem.product ? item : cartItem
-          ),
-        };
-      } else {
-        return {
-          ...state,
-          cartItems: [...state.cartItems, item],
-        };
-      }
+      // if (existingItem) {
+      //   return {
+      //     ...state,
+      //     cartItems: state.cartItems.map((cartItem) =>
+      //       cartItem.product === existingItem.product ? item : cartItem
+      //     ),
+      //   };
+      // } else {
+      //   return {
+      //     ...state,
+      //     cartItems: [...state.cartItems, item],
+      //   };
+      // }
+      return {
+        ...state,
+        cartItems: [...state.cartItems, item],
+      };
     default:
       return state;
   }
