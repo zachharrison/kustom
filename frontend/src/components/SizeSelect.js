@@ -1,12 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Container } from 'react-bootstrap';
 
-const SizeSelect = ({ size }) => {
+const SizeSelect = ({ history, match, product }) => {
   const [orderSize, setOrderSize] = useState('');
 
   const onChange = (e) => {
-    console.log(e.target.value);
     setOrderSize(e.target.value);
+  };
+
+  const addToCartHandler = () => {
+    history.push(`/cart/${match.params.id}?size=${orderSize}`);
   };
 
   return (
@@ -33,7 +36,7 @@ const SizeSelect = ({ size }) => {
           value='small'
           id='small'
           onChange={onChange}
-          disabled={size.small === 0}
+          disabled={product.size.small === 0}
         />
         <input
           type='radio'
@@ -41,7 +44,7 @@ const SizeSelect = ({ size }) => {
           value='medium'
           id='medium'
           onChange={onChange}
-          disabled={size.medium === 0}
+          disabled={product.size.medium === 0}
         />
         <input
           type='radio'
@@ -49,7 +52,7 @@ const SizeSelect = ({ size }) => {
           value='large'
           id='large'
           onChange={onChange}
-          disabled={size.large === 0}
+          disabled={product.size.large === 0}
         />
         <input
           type='radio'
@@ -57,7 +60,7 @@ const SizeSelect = ({ size }) => {
           value='xlarge'
           id='xlarge'
           onChange={onChange}
-          disabled={size.xlarge === 0}
+          disabled={product.size.xlarge === 0}
         />
 
         <label className='size-label' htmlFor='small'>
@@ -72,6 +75,15 @@ const SizeSelect = ({ size }) => {
         <label className='size-label' htmlFor='xlarge'>
           XL
         </label>
+      </div>
+      <div className='flex-container'>
+        <button
+          onClick={addToCartHandler}
+          className='btn-brand mb-4'
+          disabled={product.totalStock === 0}
+        >
+          {product.totalStock === 0 ? 'Out of Stock' : 'Add to Cart'}
+        </button>
       </div>
     </Container>
   );

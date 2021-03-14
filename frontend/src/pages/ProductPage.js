@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col, Image, ListGroup } from 'react-bootstrap';
@@ -8,17 +8,12 @@ import Message from '../components/Message';
 import Rating from '../components/Rating';
 import { listProductDetails } from '../actions/productActions';
 
-const ProductPage = ({ match }) => {
+const ProductPage = ({ history, match }) => {
   const dispatch = useDispatch();
 
   const productDetails = useSelector((state) => state.productDetails);
 
-  const {
-    loading,
-    error,
-    product,
-    product: { size },
-  } = productDetails;
+  const { loading, error, product } = productDetails;
 
   useEffect(() => {
     dispatch(listProductDetails(match.params.id));
@@ -51,14 +46,8 @@ const ProductPage = ({ match }) => {
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
-                <SizeSelect size={size} />
+                <SizeSelect product={product} history={history} match={match} />
                 <div className='flex-container'>
-                  <button
-                    className='btn-brand mb-4'
-                    disabled={product.totalStock === 0}
-                  >
-                    {product.totalStock === 0 ? 'Out of Stock' : 'Add to Cart'}
-                  </button>
                   <Rating
                     value={product.rating}
                     text={`${product.numReviews} ${
