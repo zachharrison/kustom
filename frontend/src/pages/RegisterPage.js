@@ -6,7 +6,6 @@ import Message from '../components/Message';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
 import { register } from '../actions/userActions';
-import { compareSync } from 'bcryptjs';
 
 const RegisterPage = ({ location, history }) => {
   const [name, setName] = useState('');
