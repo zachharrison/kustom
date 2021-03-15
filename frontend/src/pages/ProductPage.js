@@ -46,7 +46,7 @@ const ProductPage = ({ history, match }) => {
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
-                <SizeSelect product={product} history={history} match={match} />
+                <SizeSelect match={match} history={history} product={product} />
                 <div className='flex-container'>
                   <Rating
                     value={product.rating}

@@ -12,6 +12,11 @@ const SizeSelect = ({ history, match, product }) => {
     history.push(`/cart/${match.params.id}?size=${orderSize}`);
   };
 
+  // const addToCartHandler = () => {
+  //   dispatch(addToCart(product._id, orderSize));
+  //   history.push('/cart');
+  // };
+
   return (
     <Container
       style={{

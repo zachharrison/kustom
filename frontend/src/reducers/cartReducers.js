@@ -6,26 +6,39 @@ export const cartReducer = (state = { cartItems: [] }, action) => {
       const item = action.payload;
 
       // // ITEM ALREADY EXISTS IN THE CART
-      // const existingItem = state.cartItems.find(
-      //   (cartItem) => cartItem.product === item.product
-      // );
+      const existingItem = state.cartItems.find(
+        (cartItem) =>
+          cartItem.product === item.product && cartItem.size === item.size
+      );
 
-      // if (existingItem) {
-      //   return {
-      //     ...state,
-      //     cartItems: state.cartItems.map((cartItem) =>
-      //       cartItem.product === existingItem.product ? item : cartItem
-      //     ),
-      //   };
-      // } else {
-      //   return {
-      //     ...state,
-      //     cartItems: [...state.cartItems, item],
-      //   };
-      // }
+      if (existingItem) {
+        return {
+          ...state,
+          cartItems: state.cartItems.map((cartItem) =>
+            cartItem.product === existingItem.product &&
+            cartItem.size === existingItem.size
+              ? item
+              : cartItem
+          ),
+        };
+      } else {
+        return {
+          ...state,
+          cartItems: [...state.cartItems, item],
+        };
+      }
+    case CART_REMOVE_ITEM:
+      const itemToDelete = state.cartItems.find(
+        (cartItem) =>
+          cartItem.size === action.payload.size &&
+          cartItem.product === action.payload.id
+      );
+
       return {
         ...state,
-        cartItems: [...state.cartItems, item],
+        cartItems: state.cartItems.filter(
+          (cartItem) => cartItem !== itemToDelete
+        ),
       };
     default:
       return state;
