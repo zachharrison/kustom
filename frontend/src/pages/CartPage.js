@@ -31,9 +31,8 @@ const CartPage = ({ match, location, history }) => {
   }, [dispatch, productId, size]);
 
   const removeFromCartHandler = (id, size) => {
-    console.log('id is ', id);
-    console.log('size is ', size);
     dispatch(removeFromCart(id, size));
+    history.push('/cart');
   };
 
   const checkoutHandler = () => {
