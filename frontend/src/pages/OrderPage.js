@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -27,7 +27,7 @@ const OrderPage = ({ match }) => {
     if (!order || order._id !== orderId) {
       dispatch(getOrderDetails(orderId));
     }
-  }, [order, orderId]);
+  }, [dispatch, order, orderId]);
 
   return (
     <>
