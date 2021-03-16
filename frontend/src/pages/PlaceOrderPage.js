@@ -12,11 +12,6 @@ const PlaceOrderPage = ({ history }) => {
 
   const cart = useSelector((state) => state.cart);
 
-  // CALCULATE PRICES
-  // const addDecimals = (num) => {
-  //   return (Math.round(num * 100) / 100).toFixed(2);
-  // };
-
   cart.itemsPrice = addDecimals(
     cart.cartItems.reduce((acc, cur) => acc + cur.price * cur.qty, 0)
   );
