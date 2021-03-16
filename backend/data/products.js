@@ -4,7 +4,7 @@ const products = [
     image: '/images/black-hoodie.jpeg',
     description: 'Black hoodie by Kustom',
     category: 'Clothing',
-    price: 45,
+    price: 45.00,
     size: {
       small: 0,
       medium: 0,
@@ -19,7 +19,7 @@ const products = [
     image: '/images/white-hoodie.jpeg',
     description: 'White hoodie by Kustom',
     category: 'Clothing',
-    price: 45,
+    price: 45.00,
     size: {
       small: 8,
       medium: 10,
@@ -34,7 +34,7 @@ const products = [
     image: '/images/black-shirt.jpeg',
     description: 'Black t-shirt by Kustom',
     category: 'Clothing',
-    price: 30,
+    price: 30.00,
     size: {
       small: 12,
       medium: 10,
@@ -49,7 +49,7 @@ const products = [
     image: '/images/white-shirt.jpeg',
     description: 'White t-shirt by Kustom',
     category: 'Clothing',
-    price: 30,
+    price: 30.00,
     size: {
       small: 13,
       medium: 10,

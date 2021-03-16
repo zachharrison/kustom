@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { createOrder } from '../actions/orderActions';
+import { addDecimals } from '../helpers'
 
 const PlaceOrderPage = ({ history }) => {
   const dispatch = useDispatch();
@@ -12,9 +13,9 @@ const PlaceOrderPage = ({ history }) => {
   const cart = useSelector((state) => state.cart);
 
   // CALCULATE PRICES
-  const addDecimals = (num) => {
-    return (Math.round(num * 100) / 100).toFixed(2);
-  };
+  // const addDecimals = (num) => {
+  //   return (Math.round(num * 100) / 100).toFixed(2);
+  // };
 
   cart.itemsPrice = addDecimals(
     cart.cartItems.reduce((acc, cur) => acc + cur.price * cur.qty, 0)

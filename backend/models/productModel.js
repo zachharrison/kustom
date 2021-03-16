@@ -40,7 +40,7 @@ const productSchema = mongoose.Schema(
       default: 0,
     },
     price: {
-      type: Number,
+      type: {$trunc: [Number, 2]},
       required: true,
       default: 0,
     },
