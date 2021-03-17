@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { PayPalButton } from 'react-paypal-button-v2';
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
-import { getOrderDetails } from '../actions/orderActions';
+import { getOrderDetails, payOrder } from '../actions/orderActions';
 import { addDecimals } from '../helpers';
+import { ORDER_PAY_RESET } from '../constants/orderConstants';
 
 const OrderPage = ({ match }) => {
   const orderId = match.params.id;
@@ -45,6 +47,7 @@ const OrderPage = ({ match }) => {
     };
 
     if (!order || successPay || order._id !== orderId) {
+      dispatch({ type: ORDER_PAY_RESET });
       dispatch(getOrderDetails(orderId));
     } else if (!order.isPaid) {
       // IF ORDER IS NOT PAID ADD THE SCRIPT
@@ -55,6 +58,11 @@ const OrderPage = ({ match }) => {
       }
     }
   }, [dispatch, order, orderId, successPay]);
+
+  const successPaymentHandler = (paymentResult) => {
+    console.log(paymentResult);
+    dispatch(payOrder(orderId, paymentResult));
+  };
 
   return (
     <>
@@ -167,6 +175,19 @@ const OrderPage = ({ match }) => {
                     <Col>${addDecimals(order.totalPrice)}</Col>
                   </ListGroup.Item>
                 </ListGroup>
+                {!order.isPaid && (
+                  <ListGroup.Item>
+                    {loadingPay && <Loader />}
+                    {!sdkReady ? (
+                      <Loader />
+                    ) : (
+                      <PayPalButton
+                        amount={order.totalPrice}
+                        onSuccess={successPaymentHandler}
+                      />
+                    )}
+                  </ListGroup.Item>
+                )}
               </Card>
             </Col>
           </Row>
