@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { Button, Row, Col, ListGroup, Image, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -10,11 +11,17 @@ import { addDecimals } from '../helpers';
 const OrderPage = ({ match }) => {
   const orderId = match.params.id;
 
+  const [sdkReady, setSdkReady] = useState(false);
+
   const dispatch = useDispatch();
 
   // ORDER STATE
   const orderDetails = useSelector((state) => state.orderDetails);
   const { order, loading, error } = orderDetails;
+
+  const orderPay = useSelector((state) => state.orderPay);
+  // RENAMING THESE VARS INSIDE DESTRUCTURE BECAUSE THEY HAVE ALREADY BEEN DECLARED
+  const { loading: loadingPay, success: successPay } = orderPay;
 
   if (!loading) {
     order.itemsPrice = order.orderItems.reduce(
@@ -24,10 +31,30 @@ const OrderPage = ({ match }) => {
   }
 
   useEffect(() => {
-    if (!order || order._id !== orderId) {
+    // ADDING PAYPAL SCRIPT DYNAMICALLY
+    const addPayPalScript = async () => {
+      const { data: clientId } = await axios.get('/api/config/paypal');
+      const script = document.createElement('script');
+      script.type = 'text/javascript';
+      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`;
+      script.async = true;
+      script.onLoad = () => {
+        setSdkReady(true);
+      };
+      document.body.appendChild(script);
+    };
+
+    if (!order || successPay || order._id !== orderId) {
       dispatch(getOrderDetails(orderId));
+    } else if (!order.isPaid) {
+      // IF ORDER IS NOT PAID ADD THE SCRIPT
+      if (!window.paypal) {
+        addPayPalScript();
+      } else {
+        setSdkReady(true);
+      }
     }
-  }, [dispatch, order, orderId]);
+  }, [dispatch, order, orderId, successPay]);
 
   return (
     <>
