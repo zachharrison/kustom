@@ -5,8 +5,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
-import { listProductDetails } from '../actions/productActions';
-import { PRODUCT_CREATE_RESET } from '../constants/productConstants';
+import { listProductDetails, updateProduct } from '../actions/productActions';
+import {
+  PRODUCT_UPDATE_RESET,
+  PRODUCT_DETAILS_RESET,
+} from '../constants/productConstants';
 
 const ProductEditPage = ({ match, history }) => {
   const productId = match.params.id;
@@ -27,29 +30,49 @@ const ProductEditPage = ({ match, history }) => {
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
-  // const userUpdate = useSelector((state) => state.userUpdate);
-  // const {
-  //   loading: loadingUpdate,
-  //   error: errorUpdate,
-  //   success: successUpdate,
-  // } = userUpdate;
+  const productUpdate = useSelector((state) => state.productUpdate);
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = productUpdate;
 
+  /**********************************************
+    NOTE TO SELF: REVEIWS ARE BEING SET TO AN
+    EMPTY ARRAY EVERY TIME YOU UPDATE A PRODUCT
+  ***********************************************/
   useEffect(() => {
-    if (!product.name || product._id !== productId) {
-      dispatch(listProductDetails(productId));
+    if (successUpdate) {
+      dispatch({ type: PRODUCT_UPDATE_RESET });
+      dispatch({ type: PRODUCT_DETAILS_RESET });
+      history.push('/admin/productlist');
     } else {
-      setName(product.name);
-      setPrice(product.price);
-      setImage(product.image);
-      setCategory(product.category);
-      setSize(product.size);
-      setDescription(product.description);
+      if (!product.name || product._id !== productId) {
+        dispatch(listProductDetails(productId));
+      } else {
+        setName(product.name);
+        setPrice(product.price);
+        setImage(product.image);
+        setCategory(product.category);
+        setSize(product.size);
+        setDescription(product.description);
+      }
     }
-  }, [dispatch, history, productId, product]);
+  }, [dispatch, history, productId, product, successUpdate]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // dispatch();
+    dispatch(
+      updateProduct({
+        _id: productId,
+        name,
+        price,
+        image,
+        category,
+        size,
+        description,
+      })
+    );
   };
 
   return (
@@ -59,8 +82,8 @@ const ProductEditPage = ({ match, history }) => {
       </Link>
       <FormContainer>
         <h1>Edit Product</h1>
-        {/* {loadingUpdate && <Loader />}
-        {errorUpdate && <Message variant='danger'>{error}</Message>} */}
+        {loadingUpdate && <Loader />}
+        {errorUpdate && <Message variant='danger'>{error}</Message>}
         {loading ? (
           <Loader />
         ) : error ? (
@@ -70,7 +93,7 @@ const ProductEditPage = ({ match, history }) => {
             <Form.Group controlId='name'>
               <Form.Label>Name</Form.Label>
               <Form.Control
-                type='name'
+                type='text'
                 placeholder='Enter name'
                 autoComplete='off'
                 value={name}
@@ -81,11 +104,11 @@ const ProductEditPage = ({ match, history }) => {
             <Form.Group controlId='price'>
               <Form.Label>Price</Form.Label>
               <Form.Control
-                type='number'
+                type='text'
                 placeholder='Enter price'
                 autoComplete='off'
                 value={price}
-                onChange={(e) => setPrice(e.target.value)}
+                onChange={(e) => setPrice(Number(e.target.value))}
               ></Form.Control>
             </Form.Group>
 
@@ -127,38 +150,46 @@ const ProductEditPage = ({ match, history }) => {
               <Form.Label>Small</Form.Label>
               <Form.Control
                 className='mb-2'
-                type='number'
+                type='text'
                 placeholder='Enter Small Count'
                 autoComplete='off'
                 value={size.small}
-                onChange={(e) => setSize(e.target.value)}
+                onChange={(e) =>
+                  setSize({ ...size, small: Number(e.target.value) })
+                }
               ></Form.Control>
               <Form.Label>Medium</Form.Label>
               <Form.Control
                 className='mb-2'
-                type='number'
+                type='text'
                 placeholder='Enter Medium Count'
                 autoComplete='off'
                 value={size.medium}
-                onChange={(e) => setSize(e.target.value)}
+                onChange={(e) =>
+                  setSize({ ...size, medium: Number(e.target.value) })
+                }
               ></Form.Control>
               <Form.Label>Large</Form.Label>
               <Form.Control
                 className='mb-2'
-                type='number'
+                type='text'
                 placeholder='Enter Large Count'
                 autoComplete='off'
                 value={size.large}
-                onChange={(e) => setSize(e.target.value)}
+                onChange={(e) =>
+                  setSize({ ...size, large: Number(e.target.value) })
+                }
               ></Form.Control>
               <Form.Label>XLarge</Form.Label>
               <Form.Control
                 className='mb-2'
-                type='number'
+                type='text'
                 placeholder='Enter XL Count'
                 autoComplete='off'
                 value={size.xlarge}
-                onChange={(e) => setSize(e.target.value)}
+                onChange={(e) =>
+                  setSize({ ...size, xlarge: Number(e.target.value) })
+                }
               ></Form.Control>
             </Form.Group>
 

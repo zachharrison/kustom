@@ -31,16 +31,14 @@ const productSchema = mongoose.Schema(
     ],
     rating: {
       type: Number,
-      required: true,
       default: 0,
     },
     numReviews: {
       type: Number,
-      required: true,
       default: 0,
     },
     price: {
-      type: {$trunc: [Number, 2]},
+      type: { $trunc: [Number, 2] },
       required: true,
       default: 0,
     },

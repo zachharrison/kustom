@@ -90,7 +90,7 @@ const updateProduct = asyncHandler(async (req, res) => {
       xlarge,
     };
     product.name = name;
-    product.price = price;
+    product.price = Number(price);
     product.decription = description;
     product.image = image;
     product.category = category;
