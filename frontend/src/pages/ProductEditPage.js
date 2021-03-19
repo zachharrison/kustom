@@ -30,6 +30,8 @@ const ProductEditPage = ({ match, history }) => {
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
+  console.log(productDetails);
+
   const productUpdate = useSelector((state) => state.productUpdate);
   const {
     loading: loadingUpdate,
@@ -37,10 +39,6 @@ const ProductEditPage = ({ match, history }) => {
     success: successUpdate,
   } = productUpdate;
 
-  /**********************************************
-    NOTE TO SELF: REVEIWS ARE BEING SET TO AN
-    EMPTY ARRAY EVERY TIME YOU UPDATE A PRODUCT
-  ***********************************************/
   useEffect(() => {
     if (successUpdate) {
       dispatch({ type: PRODUCT_UPDATE_RESET });
@@ -71,6 +69,8 @@ const ProductEditPage = ({ match, history }) => {
         category,
         size,
         description,
+        numReviews: product.numReviews,
+        rating: product.rating,
       })
     );
   };
