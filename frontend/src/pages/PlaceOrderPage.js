@@ -6,6 +6,7 @@ import Message from '../components/Message';
 import CheckoutSteps from '../components/CheckoutSteps';
 import { createOrder } from '../actions/orderActions';
 import { addDecimals } from '../helpers';
+import { CART_CLEAR_ITEMS } from '../constants/cartConstants';
 
 const PlaceOrderPage = ({ history }) => {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ const PlaceOrderPage = ({ history }) => {
   useEffect(() => {
     if (success) {
       history.push(`/order/${order._id}`);
+      dispatch({ type: CART_CLEAR_ITEMS });
     }
     // eslint-disable-next-line
   }, [history, success]);
