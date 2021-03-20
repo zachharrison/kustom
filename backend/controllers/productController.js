@@ -27,7 +27,7 @@ const getProductById = asyncHandler(async (req, res) => {
 // @ROUTE     POST /api/products/:id/reviews
 // @ACCESS    PRIVATE
 const createProductReview = asyncHandler(async (req, res) => {
-  const { rating, comment } = req.body;
+  const { rating } = req.body;
 
   const product = await Product.findById(req.params.id);
 
@@ -44,7 +44,6 @@ const createProductReview = asyncHandler(async (req, res) => {
     const review = {
       name: req.user.name,
       rating: Number(rating),
-      comment,
       user: req.user._id,
     };
 
