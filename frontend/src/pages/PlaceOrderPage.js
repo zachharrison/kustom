@@ -7,12 +7,21 @@ import CheckoutSteps from '../components/CheckoutSteps';
 import { createOrder } from '../actions/orderActions';
 import { addDecimals } from '../helpers';
 import { CART_CLEAR_ITEMS } from '../constants/cartConstants';
+import { ORDER_CREATE_RESET } from '../constants/orderConstants';
+import { USER_DETAILS_RESET } from '../constants/userConstants';
 
 const PlaceOrderPage = ({ history }) => {
   const dispatch = useDispatch();
 
   const cart = useSelector((state) => state.cart);
 
+  if (!cart.shippingAddress.address) {
+    history.push('/shipping');
+  } else if (!cart.paymentMethod) {
+    history.push('/payment');
+  }
+
+  // CALULATE PRICES
   cart.itemsPrice = addDecimals(
     cart.cartItems.reduce((acc, cur) => acc + cur.price * cur.qty, 0)
   );
@@ -32,7 +41,8 @@ const PlaceOrderPage = ({ history }) => {
   useEffect(() => {
     if (success) {
       history.push(`/order/${order._id}`);
-      dispatch({ type: CART_CLEAR_ITEMS });
+      dispatch({ type: USER_DETAILS_RESET });
+      dispatch({ type: ORDER_CREATE_RESET });
     }
     // eslint-disable-next-line
   }, [history, success]);
