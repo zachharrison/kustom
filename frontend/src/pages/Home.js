@@ -7,6 +7,7 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Paginate from '../components/Paginate';
 import Meta from '../components/Meta';
+import Showcase from '../components/Showcase';
 import { listProducts } from '../actions/productActions';
 import ProductCarousel from '../components/ProductCarousel';
 
@@ -28,6 +29,7 @@ const Home = ({ match }) => {
   return (
     <>
       <Meta />
+
       {!keyword ? (
         <ProductCarousel />
       ) : (
@@ -42,6 +44,7 @@ const Home = ({ match }) => {
         <Message variant='danger'>{error}</Message>
       ) : (
         <>
+          <Showcase />
           <Row>
             {products.map((product) => (
               <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
