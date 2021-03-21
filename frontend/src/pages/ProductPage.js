@@ -6,6 +6,7 @@ import SizeSelect from '../components/SizeSelect';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Rating from '../components/Rating';
+import Meta from '../components/Meta';
 import {
   listProductDetails,
   createProductReview,
@@ -62,6 +63,7 @@ const ProductPage = ({ history, match }) => {
         <Message variant='danger'>{error}</Message>
       ) : (
         <>
+          <Meta title={product.name} />
           <Row className='mt-5'>
             <Col md={8}>
               <Image src={product.image} alt={product.name} fluid />
