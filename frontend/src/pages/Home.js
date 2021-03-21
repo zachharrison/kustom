@@ -37,7 +37,6 @@ const Home = ({ match }) => {
           <i className='fas fa-long-arrow-alt-left'></i> Back
         </Link>
       )}
-      <h1>Latest Products</h1>
       {loading ? (
         <Loader />
       ) : error ? (
