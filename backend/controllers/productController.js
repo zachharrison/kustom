@@ -80,6 +80,14 @@ const createProductReview = asyncHandler(async (req, res) => {
   }
 });
 
+// @DESC      GET THE TOP RATED PRODUCTS
+// @ROUTE     GET /api/product/top
+// @ACCESS    PUBLIC
+const getTopProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(3);
+  res.json(products);
+});
+
 /*~~~~~~~~~~~~~~ ADMIN ~~~~~~~~~~~~~~~~~*/
 
 // @DESC      DELETE A SINGLE PRODUCT
@@ -173,4 +181,5 @@ export {
   createProduct,
   updateProduct,
   createProductReview,
+  getTopProducts,
 };
