@@ -7,6 +7,7 @@ import Loader from '../components/Loader';
 import { getUserDetails, updateUserProfile } from '../actions/userActions';
 import { listMyOrders } from '../actions/orderActions';
 import { addDecimals } from '../helpers';
+import { USER_UPDATE_PROFILE_RESET } from '../constants/userConstants';
 
 const ProfilePage = ({ location, history }) => {
   /*~~~~~~~~~ COMPONENT LEVEL STATE ~~~~~~~~~~~*/
@@ -36,7 +37,8 @@ const ProfilePage = ({ location, history }) => {
     if (!userInfo) {
       history.push('/login');
     } else {
-      if (!user.name) {
+      if (!user || !user.name || success) {
+        dispatch({ type: USER_UPDATE_PROFILE_RESET });
         dispatch(getUserDetails('profile'));
         dispatch(listMyOrders());
       } else {
@@ -45,7 +47,7 @@ const ProfilePage = ({ location, history }) => {
       }
     }
     // eslint-disable-next-line
-  }, [dispatch, history, user]);
+  }, [dispatch, history, user, userInfo, success]);
 
   const submitHandler = (e) => {
     e.preventDefault();
