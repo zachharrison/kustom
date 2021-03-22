@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const divStyle = {
   display: 'flex',
@@ -16,7 +17,9 @@ const divStyle = {
 const Showcase = () => {
   return (
     <div style={divStyle}>
-      <Button className='btn'>Shop Now</Button>
+      <Link to='/shop' className='btn btn-dark'>
+        Shop Now
+      </Link>
     </div>
   );
 };

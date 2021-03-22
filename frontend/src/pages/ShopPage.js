@@ -2,16 +2,14 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Col, Row } from 'react-bootstrap';
+import { listProducts } from '../actions/productActions';
 import Product from '../components/Product';
 import Loader from '../components/Loader';
+import Meta from '../components/Meta';
 import Message from '../components/Message';
 import Paginate from '../components/Paginate';
-import Meta from '../components/Meta';
-import Showcase from '../components/Showcase';
-import { listProducts } from '../actions/productActions';
-import ProductCarousel from '../components/ProductCarousel';
 
-const Home = ({ match }) => {
+const ShopPage = ({ match }) => {
   const keyword = match.params.keyword;
 
   const pageNumber = match.params.pageNumber || 1;
@@ -29,17 +27,10 @@ const Home = ({ match }) => {
   return (
     <>
       <Meta />
-      {!keyword ? (
-        <>
-          <ProductCarousel />
-          <Showcase />
-        </>
-      ) : (
-        <Link className='my-3' to='/'>
-          <i className='fas fa-long-arrow-alt-left'></i> Back
-        </Link>
-      )}
-      {/* {loading ? (
+      <Link className='my-3' to='/'>
+        <i className='fas fa-long-arrow-alt-left'></i> Back
+      </Link>
+      {loading ? (
         <Loader />
       ) : error ? (
         <Message variant='danger'>{error}</Message>
@@ -58,9 +49,9 @@ const Home = ({ match }) => {
             keyword={keyword ? keyword : ''}
           />
         </>
-      )} */}
+      )}
     </>
   );
 };
 
-export default Home;
+export default ShopPage;

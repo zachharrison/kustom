@@ -18,6 +18,7 @@ import UserEditPage from './pages/UserEditPage';
 import ProductListPage from './pages/ProductListPage';
 import ProductEditPage from './pages/ProductEditPage';
 import OrderListPage from './pages/OrderListPage';
+import ShopPage from './pages/ShopPage';
 
 const App = () => {
   return (
@@ -26,6 +27,7 @@ const App = () => {
       <main className='py-3'>
         <Container>
           <Route path='/login' component={LoginPage} />
+          <Route path='/shop' component={ShopPage} />
           <Route path='/shipping' component={ShippingPage} />
           <Route path='/payment' component={PaymentPage} />
           <Route path='/placeorder' component={PlaceOrderPage} />
