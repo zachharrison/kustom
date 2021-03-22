@@ -40,7 +40,7 @@ const CartPage = ({ match, location, history }) => {
   };
 
   return (
-    <Row>
+    <Row className='cart' style={{ margin: 'auto' }}>
       <Col md={8}>
         <h1>Shopping Cart</h1>
         {cartItems.length === 0 ? (
@@ -55,13 +55,22 @@ const CartPage = ({ match, location, history }) => {
                   <Col md={2}>
                     <Image src={item.image} alt={item.name} fluid rounded />
                   </Col>
-                  <Col md={2}>
+                  <Col md={2} className='cart-info'>
                     <Link to={`/products/${item.product}`}>{item.name}</Link>
                   </Col>
-                  <Col md={2}>${item.price}</Col>
-                  <Col md={2}>{item.size.toUpperCase()}</Col>
-                  <Col md={2}>
+                  <Col md={2} className='cart-info'>
+                    ${item.price}
+                  </Col>
+                  <Col md={2} className='cart-info'>
+                    {item.size.toUpperCase()}
+                  </Col>
+                  <Col md={4} className='cart-info' style={{ display: 'flex' }}>
                     <Form.Control
+                      style={{
+                        minWidth: '80px',
+                        maxWidth: '60%',
+                        marginRight: '5px',
+                      }}
                       as='select'
                       value={item.qty}
                       onChange={(e) =>
@@ -80,8 +89,6 @@ const CartPage = ({ match, location, history }) => {
                         </option>
                       ))}
                     </Form.Control>
-                  </Col>
-                  <Col md={2}>
                     <Button
                       type='button'
                       variant='light'
@@ -92,6 +99,17 @@ const CartPage = ({ match, location, history }) => {
                       <i className='fas fa-trash' />
                     </Button>
                   </Col>
+                  {/* <Col md={2}>
+                    <Button
+                      type='button'
+                      variant='light'
+                      onClick={() =>
+                        removeFromCartHandler(item.product, item.size)
+                      }
+                    >
+                      <i className='fas fa-trash' />
+                    </Button>
+                  </Col> */}
                 </Row>
               </ListGroup.Item>
             ))}
