@@ -22,9 +22,9 @@ const SearchBox = ({ history }) => {
         placeholder='Search Kustom'
         onChange={(e) => setKeyword(e.target.value)}
       ></Form.Control>
-      <Button type='submit' className='btn'>
+      {/* <Button type='submit' className='btn'>
         <i className='fas fa-search'></i>
-      </Button>
+      </Button> */}
     </Form>
   );
 };
