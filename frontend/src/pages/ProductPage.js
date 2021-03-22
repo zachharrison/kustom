@@ -65,7 +65,7 @@ const ProductPage = ({ history, match }) => {
         <>
           <Meta title={product.name} />
           <Row className='mt-5'>
-            <Col md={8}>
+            <Col md={8} className='text-center'>
               <Image src={product.image} alt={product.name} fluid />
             </Col>
             <Col md={4}>

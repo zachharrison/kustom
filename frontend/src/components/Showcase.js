@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const divStyle = {
+  marginTop: '10vh',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',

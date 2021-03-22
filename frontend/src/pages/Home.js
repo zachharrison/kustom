@@ -7,6 +7,7 @@ import Loader from '../components/Loader';
 import Message from '../components/Message';
 import Paginate from '../components/Paginate';
 import Meta from '../components/Meta';
+import Half from '../components/Half';
 import Showcase from '../components/Showcase';
 import { listProducts } from '../actions/productActions';
 import ProductCarousel from '../components/ProductCarousel';
@@ -33,6 +34,7 @@ const Home = ({ match }) => {
         <>
           <ProductCarousel />
           <Showcase />
+          <Half />
         </>
       ) : (
         <Link className='my-3' to='/'>
