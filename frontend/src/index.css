@@ -2,6 +2,10 @@ main {
   min-height: 80vh;
 }
 
+footer {
+  background: #eee;
+}
+
 h1 {
   font-size: 1.8rem;
   padding: 1rem 0;
@@ -125,18 +129,6 @@ h2 {
   margin: 0 auto;
 }
 
-/* .carousel-control-prev-icon,
-.carousel-control-next-icon {
-  height: 100px;
-  width: 100px;
-  outline: black;
-  background-size: 100%, 100%;
-  border-radius: 50%;
-  border: 1px solid black;
-  color: pink;
-  background-image: none;
-} */
-
 .carousel-control-next,
 .carousel-control-prev,
 .carousel-indicators {
@@ -149,6 +141,22 @@ h2 {
   }
 }
 
+@media (max-height: 736px) {
+  main {
+    margin-bottom: 200px;
+  }
+}
+
+@media (min-height: 300px) and (max-height: 600px) {
+  main {
+    margin-bottom: 500px;
+  }
+
+  footer {
+    margin-top: 40vh;
+  }
+}
+
 .showcase {
   display: flex;
   align-items: center;
@@ -158,4 +166,22 @@ h2 {
   width: 100vw;
   height: 80vh;
   z-index: 1;
+}
+
+.social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  padding: 3px;
+}
+
+.social-icons li {
+  list-style: none;
+  margin: 0 8px;
+}
+
+.social-icons li a {
+  color: #4637cf;
+  font-size: 36px;
 }

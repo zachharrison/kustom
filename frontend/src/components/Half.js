@@ -9,6 +9,7 @@ const Half = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        marginBottom: '40vh',
       }}
       fluid
     >
@@ -24,7 +25,7 @@ const Half = () => {
           <img
             src='/images/purple-wall.jpeg'
             alt=''
-            style={{ width: '100%', height: '100%' }}
+            style={{ maxWidth: '100%', maxHeight: '100%' }}
           />
         </Col>
         <Col
