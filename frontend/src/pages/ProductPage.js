@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Row, Col, Image, ListGroup, Form, Button } from 'react-bootstrap';
+import { Row, Col, Image, ListGroup } from 'react-bootstrap';
 import SizeSelect from '../components/SizeSelect';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
@@ -21,8 +21,8 @@ const ProductPage = ({ history, match }) => {
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo } = userLogin;
+  // const userLogin = useSelector((state) => state.userLogin);
+  // const { userInfo } = userLogin;
 
   const productCreateReview = useSelector((state) => state.productCreateReview);
   const {
@@ -42,15 +42,15 @@ const ProductPage = ({ history, match }) => {
     }
   }, [dispatch, match, successReview]);
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(
-      createProductReview(match.params.id, {
-        rating,
-        comment,
-      })
-    );
-  };
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+  //   dispatch(
+  //     createProductReview(match.params.id, {
+  //       rating,
+  //       comment,
+  //     })
+  //   );
+  // };
 
   return (
     <>

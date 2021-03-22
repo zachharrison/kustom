@@ -84,7 +84,7 @@ const SizeSelect = ({ history, match, product }) => {
       <div className='flex-container'>
         <button
           onClick={addToCartHandler}
-          className='btn-brand mb-4'
+          className='btn-brand mt-2 mb-4'
           disabled={product.totalStock === 0}
         >
           {product.totalStock === 0 ? 'Out of Stock' : 'Add to Cart'}
