@@ -46,8 +46,8 @@ const App = () => {
             exact
           />
           <Route path='/admin/product/:id/edit' component={ProductEditPage} />
-          <Route path='/search/:keyword' component={Home} exact />
-          <Route path='/page/:pageNumber' component={Home} exact />
+          <Route path='/search/:keyword' component={ShopPage} exact />
+          <Route path='/page/:pageNumber' component={ShopPage} exact />
           <Route
             path='/search/:keyword/page/:pageNumber'
             component={Home}
