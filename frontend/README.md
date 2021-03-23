@@ -1,70 +1,92 @@
-# Getting Started with Create React App
+# Kustom eCommerce 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+> eCommerce platform built with the MERN stack & Redux.
 
-## Available Scripts
+Click here to try a live demo [Kustom App](https://kustom-ecommerce.herokuapp.com/)
 
-In the project directory, you can run:
+```
+Sample User Logins
 
-### `npm start`
+email: jsmith@gmail.com (Customer)
+password: password
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+email: swilliams@gmail.com (Customer)
+password: password
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Features
 
-### `npm test`
+- Full featured shopping cart
+- Top products carousel
+- Product pagination
+- Product search feature
+- User profile with orders
+- Admin product management
+- Admin user management
+- Admin Order details page
+- Mark orders as delivered option
+- Checkout process (shipping, payment method, etc)
+- PayPal / credit card integration
+- Database seeder (products & users)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
 
-### `npm run build`
+### ES Modules in Node
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+We us ECMAScript Modules in the backend in this project. Be sure to have at least Node v14.6+ or you will need to add the "--experimental-modules" flag.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Also, when importing a file (not a package), be sure to add .js at the end or you will get a "module not found" error
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You can also install and setup Babel if you would like
 
-### `npm run eject`
+### Env Variables
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Create a .env file in then root and add the following
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+NODE_ENV = development
+PORT = 5000
+MONGO_URI = your mongodb uri
+JWT_SECRET = 'abc123'
+PAYPAL_CLIENT_ID = your paypal client id
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Install Dependencies (frontend & backend)
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+npm install
+cd frontend
+npm install
+```
 
-## Learn More
+### Run
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+# Run frontend (:3000) & backend (:5000)
+npm run dev
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Run backend only
+npm run server
+```
 
-### Code Splitting
+## Build & Deploy
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+```
+# Create frontend production build
+cd frontend
+npm run build
+```
 
-### Analyzing the Bundle Size
+There is a Heroku postbuild script, so if you push to Heroku, no need to build manually for deployment to Heroku
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Seed Database
 
-### Making a Progressive Web App
+You can use the following commands to seed the database with some sample users and products as well as destroy all data
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+```
+# Import data
+npm run data:import
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# Destroy data
+npm run data:destroy
+```
