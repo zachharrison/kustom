@@ -1,6 +1,6 @@
 # Kustom eCommerce 
 
-> eCommerce platform built with the MERN stack & Redux.
+> eCommerce platform built with the MERN stack, Redux, and the PayPal API.
 
 Click here to try a live demo [Kustom App](https://kustom-ecommerce.herokuapp.com/)
 
